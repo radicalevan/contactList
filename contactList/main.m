@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
             keptThing = [inputcollector inputForPrompt:@"What would you like to do next? Type 'new' to create a new contact. Type 'list' to list all of your contacts. Type 'Quit' to exit the application."];
             
             if ([keptThing isEqualToString:@"new"]){
-                ContactCollector *
+                ContactCollector
                 NSLog(@"new!");
             }
             else if ([keptThing isEqualToString:@"quit"]){
@@ -31,6 +31,8 @@ int main(int argc, const char * argv[]) {
                 NSLog(@"quitting!",);
             }
             NSLog(@"Your name is: %s %s", firstnameInput, surnameInput);
+            
+            
 
 
         }
