@@ -11,7 +11,8 @@
 @interface ContactCollector : NSObject
 
 @property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *name;   
+@property (nonatomic, strong) NSString *name;
+
 
 -(NSString *)inputForPrompt:(NSString *)promptString;
 
