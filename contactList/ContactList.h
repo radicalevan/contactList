@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ContactCollector.h"    
 
-@interface ContactList : NSMutableArray
+@interface ContactList : NSObject
+
+@property (nonatomic, strong) NSMutableArray *cList;
+
+-(void)putContact:(ContactCollector *)contact;
+
 
 @end
