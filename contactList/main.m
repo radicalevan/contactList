@@ -32,12 +32,25 @@ int main(int argc, const char * argv[]) {
             if ([keptThing isEqualToString:@"new"]){
                 ContactCollector *contactCollector = [ContactCollector new];
                 
-
-                contactCollector.email = [inputcollector inputForPrompt:@"What is your email address?"];
-                if ([contactCollector.email isEqualToString: self.email]) {
+                BOOL shouldKeepAskingForEmail = YES;
                 
-                    NSLog(@"That email has already been entered");
+                while (shouldKeepAskingForEmail) {
+                    BOOL isEmailValid = YES;
+                    
+                    contactCollector.email = [inputcollector inputForPrompt:@"What is your email address?"];
+                    for (int i = 0; i < contactlist.cList.count; i++) {
+                        ContactCollector *cc = [contactlist.cList objectAtIndex:i];
+                        if ([contactCollector.email isEqualToString:cc.email]) {
+                            isEmailValid = NO;
+                            NSLog(@"That email has already been entered, please try again.");
+                        }
+                    }
+                    
+                    if (isEmailValid) {
+                        shouldKeepAskingForEmail = NO;
+                    }
                 }
+
                 NSString *surName = [inputcollector inputForPrompt:@"What is your surname?"];
                 NSString *firstName = [inputcollector inputForPrompt:@"What is your first name?"];
                 NSString *space = @" ";
@@ -67,7 +80,9 @@ int main(int argc, const char * argv[]) {
                     findName = [keptThing substringFromIndex:5];
                     for (int i=0; i<contactlist.cList.count; i++) {
                         // ContactCollector = contactlist.cList[i];
-                        NSLog(@"Your contact is %@" ,findName);
+                        if ([findName isEqualToString:contactlist.cList[i]]) {
+                            NSLog(@"Your contact is %@" ,findName);
+                        }
                     }
                 }
             }
